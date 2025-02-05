@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="sahitweb">
+    <meta name="author" content="sahitweb">
+    <link rel="icon" type="image/png" href="img/fav.png">
+    <title>Sahit Test - Online Food Order</title>
+    <!-- Slick Slider -->
+    <link href="vendor/slick/slick/slick.css" rel="stylesheet" type="text/css">
+    <link href="vendor/slick/slick/slick-theme.css" rel="stylesheet" type="text/css">
+    <!-- Feather Icon-->
+    <link href="vendor/icons/feather.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Sidebar CSS -->
+    <link href="vendor/sidebar/demo.css" rel="stylesheet">
+
+    <style>
+
+        .nav-pills {
+            --bs-nav-pills-border-radius: 0 !important;
+            --bs-nav-pills-link-active-color: #000000 !important;
+            --bs-nav-pills-link-active-bg: transparent !important;
+        }
+
+        /* Remove default background and border */
+        .nav-pills .nav-link {
+            background: transparent;
+            position: relative;
+            border: none;
+            color: #000;
+            min-height: 80px;
+            /* font-size: 16px; */
+        }
+
+        .nav-pills .nav-link {
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-pills .nav-link.active {
+            border: 2px solid #888888;
+            background-color: #f5f5f5 !important;
+            font-weight: 600 !important;
+            /* box-shadow: 2px 2px #cccccc !important; */
+        }
+
+        /* Add an underline effect when active */
+        /* .nav-pills .nav-link.active::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #000000;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            font-weight: 600;
+        } */
+
+        /* Hover effect */
+        .nav-pills .nav-link:hover {
+            color: #000000;
+            background-color: #f5f5f5 !important;
+        }
+
+
+        .toggle-switch-container {
+            /* display: flex;
+            align-items: center;
+            justify-content: center; */
+            /* margin-top: 20px; */
+            background-color: #000000;
+        }
+
+        .toggle-switch-container .toggle-switch {
+            display: flex;
+            background: #ffffff;
+            border-radius: 50px;
+            /* padding: 5px; */
+            width: 250px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .toggle-switch-container .toggle-switch-option {
+            flex: 1;
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+
+        .toggle-switch-container .toggle-switch-option span {
+            display: block;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .toggle-switch-container .toggle-switch-slider {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background: #E8E8E8;
+            border-radius: 50px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .toggle-switch-container .toggle-switch .active {
+            color: #000000;
+        }
+
+        .toggle-switch-container .toggle-switch .inactive {
+            color: #000000;
+        }
+
+        .toggle-switch-container .toggle-switch.active .toggle-switch-slider {
+            left: 0;
+        }
+
+        .toggle-switch-container .toggle-switch:not(.active) .toggle-switch-slider {
+            left: 50%;
+            background: #E8E8E8;
+        }
+
+        /* .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px !important;
+        } */
+
+        .addon-font-size {
+            font-size: 15px;
+            line-height: 1.2;
+        }
+
+        .special-instruction:focus {
+            border-color: #999999 !important;
+        }
+
+        .btn-get:disabled {
+            /* color: #000000 !important; */
+            border-color: #000000 !important;
+        }
+
+        .menu-card {
+            /* display: flex; */
+            align-items: center;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            cursor: -webkit-grab;
+            cursor: grab;
+            border-radius: 12px;
+        }
+
+        .modal-dialog-scrollable .modal-body::-webkit-scrollbar {
+            width: 10px !important;
+        }
+
+        .addon-qty-select {
+            width: 60px !important;
+            padding-top: 4px !important;
+            padding-bottom: 4px !important;
+            /* padding-left: 4px !important;
+            padding-right: 4px !important; */
+            font-size: 12px !important;
+            border-radius: 4px !important;
+        }
+
+        .group-addon-space {
+            margin-left: 17%;
+        }
+
+        .search-box {
+            width: 250px;
+            height: 45px;
+            cursor: pointer;
+        }
+
+        .search-input-field:focus {
+            border-color: #000000 !important;
+        }
+        
+    </style>
+
+</head>
+
+<body class="fixed-bottom-bar">
+
+    <header class="section-header">
+        <section class="header-main shadow-sm bg-white">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <a href="home.html" class="brand-wrap mb-0">
+                            <!-- <img alt="#" class="img-fluid" src="img/logo_web.png"> -->
+                            <h5>SAHIT TEST</h5>
+                        </a>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="d-flex align-items-center justify-content-end pe-5">
+
+                            <!-- offers -->
+                            <!-- <a href="#" class="widget-header me-4 text-white btn bg-primary m-none" data-bs-toggle="modal" data-bs-target="#menuModal">
+                                <div class="icon d-flex align-items-center">
+                                    <i class="feather-disc h6 me-2 mb-0"></i> <span>Offers</span>
+                                </div>
+                            </a> -->
+
+                            <!-- signin -->
+                            <!-- <a href="login.html" class="widget-header me-4 text-dark m-none">
+                                <div class="icon d-flex align-items-center">
+                                    <i class="feather-user h6 me-2 mb-0"></i> <span>Sign in</span>
+                                </div>
+                            </a> -->
+
+                            <!-- my account -->
+                            <div class="dropdown me-4 m-none">
+                                <a href="#" class="dropdown-toggle text-dark py-3 d-block" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img alt="#" src="img/user/1.png" class="img-fluid rounded-circle header-user me-2 header-user"> Hi Sahit
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="status_onprocess.html">Orders History</a>
+                                    <a class="dropdown-item" href="faq.html">Delivery support</a>
+                                    <a class="dropdown-item" href="login.html">Logout</a>
+                                </div>
+                            </div>
+
+                            <!-- signin -->
+                            <a class="widget-header me-4 text-dark" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                                <div class="icon d-flex align-items-center">
+                                    <span>Basket</span>
+                                    <i class="feather-shopping-cart fs-4 ms-2 mb-0 fw-bold"></i> 
+                                    <span class="position-relative translate-middle badge rounded-pill bg-success" style="top: 0px; left: 8px; font-size: 12px;">2</span>
+                                </div>
+                            </a>
+                            
+                        </div>
+                        <!-- widgets-wrap.// -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <div class="d-none">
+        <div class="d-flex">
+
+            <div class="bg-primary p-3 d-flex align-items-center w-50">
+                <a class="toggle togglew toggle-2" href="#"><span></span></a>
+                <h4 class="fw-bold m-0 text-white">SAHIT TEST</h4>
+            </div>
+    
+            <div class="bg-primary d-flex justify-content-end w-50">
+                <div class="dropdown py-3 me-3">
+                    <a class="btn btn-link text-white dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Hi Sahit
+                    </a>
+                  
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="status_onprocess.html">Orders History</a></li>
+                      <li><a class="dropdown-item" href="faq.html">Delivery support</a></li>
+                      <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                    </ul>
+                </div>
+        
+                <a class="text-dark py-3 me-3" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                    <div class="icon d-flex align-items-center">
+                        <i class="feather-shopping-cart fs-4 ms-2 mb-0 fw-bold text-white"></i> 
+                        <span class="position-relative translate-middle badge rounded-pill bg-success" style="top: 0px; left: 8px; font-size: 12px;">2</span>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="offer-section py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 mt-3">
+
+                    <div class="toggle-switch-container">
+                        <div class="toggle-switch active" id="toggleSwitch">
+                            <div class="toggle-switch-slider"></div>
+                            <div class="toggle-switch-option active" id="toggleSwitchCollection">
+                                <!-- <div class="icon">✔</div> -->
+                                Collection
+                                <!-- <span>07:00 - 22:30</span> -->
+                            </div>
+                            <div class="toggle-switch-option inactive" id="toggleSwitchDelivery">
+                                Delivery
+                                <!-- <span>07:00 - 22:30</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-4 col-12">
+                            <p class="text-white-50 fw-bold m-0 ms-2 small">Delivery</p>
+                            <p class="text-white m-0 ms-2">Unavailable</p>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <p class="text-white-50 fw-bold m-0 ms-2 small">Open time</p>
+                            <p class="text-white m-0 ms-2">8:00 AM</p>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <p class="text-white-50 fw-bold m-0 ms-2 small">Close time</p>
+                            <p class="text-white m-0 ms-2">8:00 PM</p>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="col-md-4 col-sm-12 my-3">
+
+                    <div class="search py-1 d-flex justify-content-center" style="width: 100%;">
+                        <!-- <div class="search-box bg-light rounded-pill border d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#searchModal">
+                            <p class="mb-0 ms-3 text-secondary"><i class="feather-search"></i> Search Your Favourite Item</p>
+                        </div> -->
+
+                        <!-- <div class="input-group bg-light rounded-pill border"> -->
+                            <!-- <input type="text" class="form-control form-control-lg bg-transparent border-0 rounded-0" id="inlineFormInputGroup" placeholder="Search Your Favourite Item..." readonly onclick="alert('testing')"> -->
+                            <!-- <button class="btn bg-light text-primary bg-transparent border-0 rounded-0" type="button" disabled><i class="feather-search"></i></button> -->
+                        <!-- </div> -->
+                    </div>
+
+                    <!-- <div class="alert-text mt-3">
+                        <h6 class="text-danger">
+                            Restaurant is Not Active Now, Please Wait.
+                        </h6>
+                    </div> -->
+
+                </div>
+
+                <div class="col-md-4 col-sm-12 mt-3">
+                    <div class="mb-3 text-white d-flex justify-content-center">
+                        <div>
+                            <button type="button" class="btn btn-success btn-lg mb-3 px-5" style="border-radius: 30px;">Checkout &nbsp;<i class="feather-log-out"></i></button> 
+                            <h5 class="text-success m-0 text-center fw-bolder">£24.00 (3 Items)</h5>
+                        </div>
+                        <!-- <h2 class="fw-bold">Tanddo</h2> -->
+                    </div>
+                    <!-- <div class="pb-4">
+                        <div class="row">
+                            <div class="col-6 col-md-2">
+                                <p class="text-white-50 fw-bold m-0 small">Open time</p>
+                                <p class="text-white m-0">8:00 AM</p>
+                            </div>
+                            <div class="col-6 col-md-2">
+                                <p class="text-white-50 fw-bold m-0 small">Close time</p>
+                                <p class="text-white m-0">8:00 PM</p>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="swiggi-home-page mt-4">
+        
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="my-4">
+                        <div class="menus-slider nav nav-pills" id="pills-tab" role="tablist">
+                            <div class="menus-item nav-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link active" id="pills-fries-tab" data-bs-toggle="pill" href="#pills-fries" role="tab" aria-controls="pills-fries" aria-selected="true">
+                                    <p class="m-0 text-primary menus-item-data">PIZZAS DEALS AND GRILLED ITEMS</p>
+                                </a>
+                            </div>
+                            <div class="menus-item nav-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-pizza-tab" data-bs-toggle="pill" href="#pills-pizza" role="tab" aria-controls="pills-pizza" aria-selected="false">
+                                    <p class="m-0 text-primary menus-item-data">PIZZAS</p>
+                                </a>
+                            </div>
+                            <div class="menus-item nav-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary menus-item-data">GRILLED ITEMS & KABABS</p>
+                                </a>
+                            </div>
+                            <div class="menus-item nav-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary menus-item-data">BUCKET MEAL</p>
+                                </a>
+                            </div>
+                            <div class="menus-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary menus-item-data">YUMMY MEALS</p>
+                                </a>
+                            </div>
+                            <div class="menus-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary py-2">SIDES</p>
+                                </a>
+                            </div>
+                            <div class="menus-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary py-2">BURGERS</p>
+                                </a>
+                            </div>
+                            <div class="menus-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary py-2">DESSERTS</p>
+                                </a>
+                            </div>
+                            <div class="menus-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary py-2">PANNIS</p>
+                                </a>
+                            </div>
+                            <div class="menus-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary py-2">SHAKES</p>
+                                </a>
+                            </div>
+                            <div class="menus-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary py-2">GOURMET SPECIAL</p>
+                                </a>
+                            </div>
+                            <div class="menus-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary py-2">SAUCES</p>
+                                </a>
+                            </div>
+                            <div class="menus-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary py-2">PERI PERI CHICKEN</p>
+                                </a>
+                            </div>
+                            <div class="menus-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary py-2">Chicken Curry Rice & Drink</p>
+                                </a>
+                            </div>
+                            <div class="menus-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary py-2">BUY 1 GET 1 FREE PIZZA</p>
+                                </a>
+                            </div>
+                            <div class="menus-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary py-2">YUMMY FRIED CHICKEN</p>
+                                </a>
+                            </div>
+                            <div class="menus-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary py-2">RICE DISHES SIDE ORDERS</p>
+                                </a>
+                            </div>
+                            <div class="menus-item">
+                                <a class="bg-white rounded d-block p-2 text-center shadow-sm nav-link" id="pills-burger-tab" data-bs-toggle="pill" href="#pills-burger" role="tab" aria-controls="pills-burger" aria-selected="false">
+                                    <p class="m-0 text-primary py-2">Chicken Curry Rice & Drink</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-fries" role="tabpanel" aria-labelledby="pills-fries-tab" tabindex="0">
+                            
+                            <div class="pt-2 pb-3 title d-flex align-items-center">
+                                <h5 class="m-0">PIZZAS DEALS AND GRILLED ITEMS</h5>
+                                <span class="fw-bold ms-auto" href="#"> 20 items</span>
+                            </div>
+
+                            <div class="most_sale">
+                                <div class="row mb-3">
+                
+                                    <div class="col-md-4 mb-3">
+                                        <div class="menu-card d-flex list-card bg-white shadow-sm" onclick="OpenMenuAddons()">
+                                            <div class="list-card-image">
+                                                <img alt="#" src="img/sales1.png" class="img-fluid item-img w-100">
+                                            </div>
+                
+                                            <div class="p-3 position-relative">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1 text-black">Crispy Fried Chicken Fillet Burger</h6>
+                                                    <p class="text-gray mb-3">Chicken fillet, cheese slice, lettuce and burger sauce.</p>
+                                                    <p class="mb-3">
+                                                        <h6 class="text-black"> £500</h6>
+                                                    </p>
+                                                    <p class="text-gray mb-1 time">
+                                                        <span class="bg-light text-dark rounded-sm py-1 px-2">
+                                                            <i class="feather-clock"></i> 15–25 min
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-4 mb-3">
+                                        <div class="menu-card d-flex list-card bg-white shadow-sm" onclick="OpenMenuAddons()">
+                                            <div class="list-card-image">
+                                                <a href="restaurant.html">
+                                                    <img alt="#" src="img/sales3.png" class="img-fluid item-img w-100">
+                                                </a>
+                                            </div>
+                
+                                            <div class="p-3 position-relative">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1">
+                                                        <a href="restaurant.html" class="text-black">Crispy Fried Chicken Fillet Burger</a>
+                                                    </h6>
+                                                    <p class="text-gray mb-3">Chicken fillet, cheese slice, lettuce and burger sauce.</p>
+                                                    <p class="mb-3"><h6 class="text-black"> £500</h6></p>
+                                                    <p class="text-gray mb-1 time">
+                                                        <span class="bg-light text-dark rounded-sm py-1 px-2">
+                                                            <i class="feather-clock"></i> 15–25 min
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <div class="menu-card d-flex list-card bg-white shadow-sm" onclick="OpenMenuAddons()">
+                                            <div class="list-card-image">
+                                                <img alt="#" src="img/sales4.png" class="img-fluid item-img w-100">
+                                            </div>
+                
+                                            <div class="p-3 position-relative">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1 text-black">Crispy Fried Chicken Fillet Burger</h6>
+                                                    <p class="text-gray mb-3">Chicken fillet, cheese slice, lettuce and burger sauce.</p>
+                                                    <p class="mb-3">
+                                                        <h6 class="text-black"> £500</h6>
+                                                    </p>
+                                                    <p class="text-gray mb-1 time">
+                                                        <span class="bg-light text-dark rounded-sm py-1 px-2">
+                                                            <i class="feather-clock"></i> 15–25 min
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                
+                                </div>
+                            </div>
+        
+                        </div>
+                        <div class="tab-pane fade" id="pills-pizza" role="tabpanel" aria-labelledby="pills-pizza-tab" tabindex="0">
+                            
+                            <div class="pt-2 pb-3 title d-flex align-items-center">
+                                <h5 class="m-0">PIZZAS</h5>
+                                <span class="fw-bold ms-auto" href="#"> 10 items</span>
+                            </div>
+
+                            <div class="most_sale">
+                                <div class="row mb-3">
+
+                                    <div class="col-md-4 mb-3">
+                                        <div class="menu-card d-flex list-card bg-white shadow-sm" onclick="OpenMenuAddons()">
+                                            <div class="list-card-image">
+                                                <a href="restaurant.html">
+                                                    <img alt="#" src="img/sales3.png" class="img-fluid item-img w-100">
+                                                </a>
+                                            </div>
+                
+                                            <div class="p-3 position-relative">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1">
+                                                        <a href="restaurant.html" class="text-black">Crispy Fried Chicken Fillet Burger</a>
+                                                    </h6>
+                                                    <p class="text-gray mb-3">Chicken fillet, cheese slice, lettuce and burger sauce.</p>
+                                                    <p class="mb-3"><h6 class="text-black"> £500</h6></p>
+                                                    <p class="text-gray mb-1 time">
+                                                        <span class="bg-light text-dark rounded-sm py-1 px-2">
+                                                            <i class="feather-clock"></i> 15–25 min
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-4 mb-3">
+                                        <div class="menu-card d-flex list-card bg-white shadow-sm" onclick="OpenMenuAddons()">
+                                            <div class="list-card-image">
+                                                <img alt="#" src="img/sales1.png" class="img-fluid item-img w-100">
+                                            </div>
+                
+                                            <div class="p-3 position-relative">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1 text-black">Crispy Fried Chicken Fillet Burger</h6>
+                                                    <p class="text-gray mb-3">Chicken fillet, cheese slice, lettuce and burger sauce.</p>
+                                                    <p class="mb-3">
+                                                        <h6 class="text-black"> £500</h6>
+                                                    </p>
+                                                    <p class="text-gray mb-1 time">
+                                                        <span class="bg-light text-dark rounded-sm py-1 px-2">
+                                                            <i class="feather-clock"></i> 15–25 min
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-burger" role="tabpanel" aria-labelledby="pills-burger-tab" tabindex="0">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, harum.
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- basket offcanvas start -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header pb-2 border-bottom">
+            <h4 class="offcanvas-title" id="offcanvasExampleLabel">Your Order</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body py-0">
+                
+            <div class="border-bottom py-3">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <select class="form-select addon-qty-select">
+                            <option value="0">remove</option>
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                        &nbsp;
+                        <p class="text-primary m-0 fw-bold">Margherita Pizza</p>
+                    </div>
+                    <p class="text-primary mb-0 float-end fw-bold">£6.28</p>
+                </div>
+                <div class="">
+                    <p class="text-secondary mb-0 group-addon-space">Choose your size</p>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p class="text-secondary mb-0 group-addon-space">9"</p>
+                    <p class="text-secondary mb-0 float-end">£0.50</p>
+                </div>
+                <div class="">
+                    <p class="text-secondary mb-0 group-addon-space">Choose your extra toppings</p>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p class="text-secondary mb-0 group-addon-space">Black Olivers</p>
+                    <p class="text-secondary mb-0 float-end">£0.50</p>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p class="text-secondary mb-0 group-addon-space">Chicken</p>
+                    <p class="text-secondary mb-0 float-end">£0.50</p>
+                </div>
+            </div>
+
+            <div class="border-bottom py-3">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <select class="form-select addon-qty-select">
+                            <option value="0">remove</option>
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                        &nbsp;
+                        <p class="text-primary m-0 fw-bold">Crispy Fried Chicken Fillet Burger</p>
+                    </div>
+                    <p class="text-primary mb-0 float-end fw-bold">£6.28</p>
+                </div>
+                <div class="">
+                    <p class="text-secondary mb-0 group-addon-space">Make it</p>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p class="text-secondary mb-0 group-addon-space">Meal</p>
+                    <p class="text-secondary mb-0 float-end">£1.00</p>
+                </div>
+                <div class="">
+                    <p class="text-secondary mb-0 group-addon-space">Note: Special Instruction</p>
+                </div>
+            </div>
+
+            <div class="py-3 clearfix border-bottom">
+                <h6 class="mb-1 text-primary fw-bold">Sub-Total <span class="float-end text-dark">£14.00</span></h6>
+                <hr>
+                <p class="mb-1 text-primary">Shipping Charges <span class="float-end text-dark">£6.28</span></p>
+                <p class="mb-1 text-primary">Delivery Fee<span class="float-end text-dark">£10</span></p>
+                <p class="mb-1 text-primary">Total Discount<span class="float-end text-primary">£1.84</span></p>
+                <hr>
+                <h5 class="fw-bold mb-0">TOTAL <span class="float-end">£13.29</span></h5>
+            </div>
+
+            <div class="py-2">
+                <a class="btn btn-primary w-100 btn-lg" href="#">Checkout <i class="feather-arrow-right"></i></a>
+            </div>
+
+        </div>
+    </div>
+    <!-- basket offcanvas end -->
+
+
+    <!-- Fixed Footer -->
+    <!-- <div class="swiggi-menu-fotter fixed-bottom bg-white px-3 py-2 text-center d-none">
+        <div class="row">
+            <div class="col selected">
+                <a href="home.html" class="text-primary small fw-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-home text-primary"></i></p>
+                    Home
+                </a>
+            </div>
+            <div class="col">
+                <a href="most_popular.html" class="text-dark small fw-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-map-pin"></i></p>
+                    Trending
+                </a>
+            </div>
+            <div class="col bg-white rounded-circle mt-n4 px-3 py-2">
+                <div class="bg-primary rounded-circle mt-n0 shadow">
+                    <a href="checkout.html" class="text-white small fw-bold text-decoration-none">
+                        <i class="feather-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <a href="favorites.html" class="text-dark small fw-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-heart"></i></p>
+                    Favorites
+                </a>
+            </div>
+            <div class="col">
+                <a href="profile.html" class="text-dark small fw-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-user"></i></p>
+                    Profile
+                </a>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- footer -->
+    <footer class="section-footer border-top bg-dark">
+        <div class="container">
+            <div class="footer-top padding-y py-5">
+                <div class="row">
+                    <aside class="col-md-4 footer-about">
+                        <article class="d-flex pb-3">
+                            <div><img alt="#" src="img/logo_web.png" class="logo-footer me-3"></div>
+                            <div>
+                                <h6 class="title text-white">About Us</h6>
+                                <p class="text-muted">Some short text about company like You might remember the Dell
+                                    computer commercials in which a youth reports.</p>
+                                <!-- <div class="d-flex align-items-center">
+                                    <a class="btn btn-icon btn-outline-light me-1 btn-sm" title="Facebook"
+                                        target="_blank" href="#"><i class="feather-facebook"></i></a>
+                                    <a class="btn btn-icon btn-outline-light me-1 btn-sm" title="Instagram"
+                                        target="_blank" href="#"><i class="feather-instagram"></i></a>
+                                    <a class="btn btn-icon btn-outline-light me-1 btn-sm" title="Youtube"
+                                        target="_blank" href="#"><i class="feather-youtube"></i></a>
+                                    <a class="btn btn-icon btn-outline-light me-1 btn-sm" title="Twitter"
+                                        target="_blank" href="#"><i class="feather-twitter"></i></a>
+                                </div> -->
+                            </div>
+                        </article>
+                    </aside>
+                    <aside class="col-sm-3 col-md-2 text-white">
+                        <h6 class="title">Error Pages</h6>
+                        <ul class="list-unstyled hov_footer">
+                            <li> <a href="not-found.html" class="text-muted">Not found</a></li>
+                            <li> <a href="maintence.html" class="text-muted">Maintence</a></li>
+                            <li> <a href="coming-soon.html" class="text-muted">Coming Soon</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-sm-3 col-md-2 text-white">
+                        <h6 class="title">Services</h6>
+                        <ul class="list-unstyled hov_footer">
+                            <li> <a href="contact-us.html" class="text-muted">Contact Us</a></li>
+                            <li> <a href="terms.html" class="text-muted">Terms of use</a></li>
+                            <li> <a href="privacy.html" class="text-muted">Privacy policy</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-sm-3  col-md-2 text-white">
+                        <h6 class="title">For users</h6>
+                        <ul class="list-unstyled hov_footer">
+                            <li> <a href="login.html" class="text-muted"> User Login </a></li>
+                            <li> <a href="signup.html" class="text-muted"> User register </a></li>
+                            <li> <a href="forgot_password.html" class="text-muted"> Forgot Password </a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-sm-3  col-md-2 text-white">
+                        <h6 class="title">More Pages</h6>
+                        <ul class="list-unstyled hov_footer">
+                            <li> <a href="most_popular.html" class="text-muted"> Most popular </a></li>
+                            <li> <a href="restaurant.html" class="text-muted"> Restaurant Details </a></li>
+                            <li> <a href="favorites.html" class="text-muted"> Favorites </a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <!-- row.// -->
+            </div>
+        </div>
+        <!-- //container -->
+        <div class="footer-copyright border-top py-3 bg-light">
+            <div class="container d-flex align-items-center">
+                <p class="mb-0"> © 2025 Company All rights reserved </p>
+                <!-- <p class="text-muted mb-0 ms-auto d-flex align-items-center">
+                    <a href="#" class="d-block"><img alt="#" src="img/appstore.png" height="40"></a>
+                    <a href="#" class="d-block ms-3"><img alt="#" src="img/playmarket.png" height="40"></a>
+                </p> -->
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="menuModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bolder">Margherita Pizza <span class="ms-2">£10</span></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    
+                    <div class="row g-0 swiggi-filter">
+
+                        <div class="col-md-12 filter">
+                            <div class="p-3 bg-light border-bottom">
+                                <h6 class="m-0">
+                                    <span class="text-uppercase fw-bold">choose your flavour</span> 
+                                    <span class="text-secondary fs-6">(Choose 1)</span> 
+                                    <!-- <span class="badge rounded-pill text-bg-success float-end"> <i class="feather-check"></i> Required</span> -->
+                                    <span class="badge rounded-pill text-bg-secondary float-end">Required</span>
+                                </h6>
+                            </div>
+                            <div class="border-bottom d-flex px-3">
+                                <div class="form-check w-100">
+                                    <input class="form-check-input p-2 mt-3" type="checkbox" value="" id="addonCheckbox1">
+                                    <label class="form-check-label w-100 py-3 ps-2 addon-font-size" for="addonCheckbox1">Spicy</label>
+                                </div>
+                                <div class="ms-auto py-3">
+                                    <div class="addon-font-size">£0.00</div>
+                                </div>
+                            </div>
+                            <div class="border-bottom d-flex px-3">
+                                <div class="form-check w-100">
+                                    <input class="form-check-input p-2 mt-3" type="checkbox" value="" id="addonCheckbox2">
+                                    <label class="form-check-label w-100 py-3 ps-2 addon-font-size" for="addonCheckbox2">Original</label>
+                                </div>
+                                <div class="ms-auto py-3">
+                                    <div class="addon-font-size">£0.00</div>
+                                </div>
+                            </div>
+                            <div class="border-bottom d-flex px-3">
+                                <div class="form-check w-100">
+                                    <input class="form-check-input p-2 mt-3" type="checkbox" value="" id="addonCheckbox3">
+                                    <label class="form-check-label w-100 py-3 ps-2 addon-font-size" for="addonCheckbox3">Peri Peri</label>
+                                </div>
+                                <div class="ms-auto py-3">
+                                    <div class="addon-font-size">£0.00</div>
+                                </div>
+
+                                <!-- <div class="input-group my-2 ms-2" style="max-width: 150px;" status="show">
+                                    <button class="btn btn-primary" type="button" id="button-addon1"><i class="feather-plus"></i></button>
+                                    <input class="form-control" type="number" min="1" max="4" id="addons-qty-58" value="1" aria-label="Example text with button addon" aria-describedby="button-addon1" disabled="">
+                                    <button class="btn btn-primary" type="button" id="button-addon2"><i class="feather-minus"></i></button>
+                                </div> -->
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 filter">
+                            <div class="p-3 bg-light border-bottom">
+                                <h6 class="m-0">
+                                    <span class="text-uppercase fw-bold">Make Meal</span> 
+                                    <span class="text-secondary fs-6">(Choose 1)</span> 
+                                    <span class="badge rounded-pill text-bg-secondary float-end">Required</span>
+                                </h6>
+                            </div>
+                            <div class="border-bottom d-flex px-3">
+                                <div class="form-check w-100">
+                                    <input class="form-check-input p-2 mt-3" type="checkbox" value="" id="addonCheckbox4">
+                                    <label class="form-check-label w-100 py-3 ps-2 addon-font-size" for="addonCheckbox4">Meal</label>
+                                </div>
+                                <div class="ms-auto py-3">
+                                    <div class="addon-font-size">£2.00</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 filter">
+                            <div class="p-3 bg-light border-bottom">
+                                <h6 class="m-0">
+                                    <span class="text-uppercase fw-bold">Free Drink</span> 
+                                    <span class="text-secondary fs-6">(Choose up to 2)</span> 
+                                    <span class="badge rounded-pill text-bg-secondary float-end">Required</span>
+                                </h6>
+                            </div>
+                            <div class="border-bottom d-flex px-3">
+                                <div class="form-check w-100">
+                                    <input class="form-check-input p-2 mt-3" type="checkbox" value="" id="addonCheckbox5">
+                                    <label class="form-check-label w-100 py-3 ps-2 addon-font-size" for="addonCheckbox5">Pepsi</label>
+                                </div>
+                                <div class="ms-auto py-3">
+                                    <div class="addon-font-size">£0.00</div>
+                                </div>
+                            </div>
+                            <div class="border-bottom d-flex px-3">
+                                <div class="form-check w-100">
+                                    <input class="form-check-input p-2 mt-3" type="checkbox" value="" id="addonCheckbox6">
+                                    <label class="form-check-label w-100 py-3 ps-2 addon-font-size" for="addonCheckbox6">Water</label>
+                                </div>
+                                <div class="ms-auto py-3">
+                                    <div class="addon-font-size">£0.00</div>
+                                </div>
+                            </div>
+                            <div class="border-bottom d-flex px-3">
+                                <div class="form-check w-100">
+                                    <input class="form-check-input p-2 mt-3" type="checkbox" value="" id="addonCheckbox7">
+                                    <label class="form-check-label w-100 py-3 ps-2 addon-font-size" for="addonCheckbox7">7up</label>
+                                </div>
+                                <div class="ms-auto py-3">
+                                    <div class="addon-font-size">£0.00</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 filter">
+                            <div class="p-3 bg-light border-bottom">
+                                <h6 class="m-0">
+                                    <span class="text-uppercase fw-bold">Sauces</span> 
+                                    <span class="text-secondary fs-6">(Choose 1)</span> 
+                                    <span class="badge rounded-pill text-bg-secondary float-end">Required</span>
+                                </h6>
+                            </div>
+                            <div class="border-bottom d-flex px-3">
+                                <div class="form-check w-100">
+                                    <input class="form-check-input p-2 mt-3" type="checkbox" value="" id="addonCheckbox8">
+                                    <label class="form-check-label w-100 py-3 ps-2 addon-font-size" for="addonCheckbox8">Mayo</label>
+                                </div>
+                                <div class="ms-auto py-3">
+                                    <div class="addon-font-size">£0.50</div>
+                                </div>
+                            </div>
+                            <div class="border-bottom d-flex px-3">
+                                <div class="form-check w-100">
+                                    <input class="form-check-input p-2 mt-3" type="checkbox" value="" id="addonCheckbox9">
+                                    <label class="form-check-label w-100 py-3 ps-2 addon-font-size" for="addonCheckbox9">Garlic Mayo</label>
+                                </div>
+                                <div class="ms-auto py-3">
+                                    <div class="addon-font-size">£0.50</div>
+                                </div>
+                            </div>
+                            <div class="border-bottom d-flex px-3">
+                                <div class="form-check w-100">
+                                    <input class="form-check-input p-2 mt-3" type="checkbox" value="" id="addonCheckbox10">
+                                    <label class="form-check-label w-100 py-3 ps-2 addon-font-size" for="addonCheckbox10">Ketchup</label>
+                                </div>
+                                <div class="ms-auto py-3">
+                                    <div class="addon-font-size">£0.50</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 filter">
+                            <div class="p-3 bg-light border-bottom">
+                                <h6 class="m-0">
+                                    <span class="text-uppercase fw-bold">Special Instructions</span>
+                                </h6>
+                            </div>
+                            <div class="border-bottom p-3">
+                                <textarea name="" class="form-control special-instruction" rows="3" placeholder="Add a note here..."></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary px-5 py-2" data-bs-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-primary btn-get px-5 py-2" disabled>Get</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- <div class="modal-header">
+                </div> -->
+                <div class="modal-body">
+
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="feather-search"></i></span>
+                        <input type="text" class="form-control search-input-field" placeholder="Search Your Favourite Item..." aria-label="search" aria-describedby="basic-addon1">
+                    </div>
+
+                    <!-- <p class="text-center fw-bold fs-6">Search item not found</p> -->
+
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="text-primary mb-1">List group item heading</h5>
+                                <span class="text-primary">£2.00</span>
+                            </div>
+                            <p class="mb-1">Chicken fillet, cheese slice, lettuce and burger sauce.</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="text-primary mb-1">List group item heading</h5>
+                                <span class="text-primary">£2.00</span>
+                            </div>
+                            <p class="mb-1">Chicken fillet, cheese slice, lettuce and burger sauce.</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="text-primary mb-1">List group item heading</h5>
+                                <span class="text-primary">£2.00</span>
+                            </div>
+                            <p class="mb-1">Chicken fillet, cheese slice, lettuce and burger sauce.</p>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- slick Slider JS-->
+    <script type="text/javascript" src="vendor/slick/slick/slick.min.js"></script>
+    <!-- Sidebar JS-->
+    <!-- <script type="text/javascript" src="vendor/sidebar/hc-offcanvas-nav.js"></script> -->
+    <!-- Custom scripts for all pages-->
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="js/rocket-loader.min.js"></script>
+    <!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9098ae668e36f9ef","version":"2025.1.0","r":1,"serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"dd471ab1978346bbb991feaa79e6ce5c","b":1}' crossorigin="anonymous"></script> -->
+
+    <script>
+
+        // toggle switch code start //
+        const toggleSwitch = document.getElementById('toggleSwitch');
+        const toggleSwitchCollection = document.getElementById('toggleSwitchCollection');
+        const toggleSwitchDelivery = document.getElementById('toggleSwitchDelivery');
+
+        toggleSwitch.addEventListener('click', () => {
+            toggleSwitch.classList.toggle('active');
+
+            if (toggleSwitch.classList.contains('active')) {
+                toggleSwitchCollection.classList.add('active');
+                toggleSwitchCollection.classList.remove('inactive');
+                toggleSwitchDelivery.classList.add('inactive');
+                toggleSwitchDelivery.classList.remove('active');
+            } else {
+                toggleSwitchDelivery.classList.add('active');
+                toggleSwitchDelivery.classList.remove('inactive');
+                toggleSwitchCollection.classList.add('inactive');
+                toggleSwitchCollection.classList.remove('active');
+            }
+        });
+        // toggle switch code end //
+
+        // trim menu title start //
+        $(".menus-item-data").each (function () {
+            if ($(this).text().length > 30) {
+                $(this).text($(this).text().substring(0,30) + '...');
+            }
+        });
+        // trim menu title end //
+
+        function OpenMenuAddons() {
+            $('#menuModal').modal('show');
+        }
+
+    </script>
+</body>
+
+</html>
